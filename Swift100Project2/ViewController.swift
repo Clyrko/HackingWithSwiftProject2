@@ -76,11 +76,13 @@ class ViewController: UIViewController {
             
         } else {
             
-            title = "Wrong"
+            // Displays name of choice
+            title = "Wrong, this is the flag of \(countries[sender.tag].uppercased())"
             score -= 1
             
         }
         
+        // Alert when choice is picked
         if questionCount < questionLimit {
             
             let ac = UIAlertController(title: title, message: "Your current score is \(score)", preferredStyle: .alert)
