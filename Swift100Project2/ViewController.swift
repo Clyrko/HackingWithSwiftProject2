@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
         
-        func askQuestion() {
+        func askQuestion(action: UIAlertAction!) {
             
             //
             
@@ -61,11 +61,30 @@ class ViewController: UIViewController {
             
         }
         
-        askQuestion()
+        askQuestion(action: nil)
 
     }
     
     @IBAction func buttonTouched(_ sender: UIButton) {
+        
+        var title: String
+        
+        if sender.tag == correctAnswer {
+            
+            title = "Correct!"
+            score += 1
+            
+        } else {
+            
+            title = "Wrong"
+            score -= 1
+            
+        }
+        
+        let ac = UIAlertController(title: title, message: "Your current score is \(score)", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        present(ac, animated: true)
+        
     }
     
 }
