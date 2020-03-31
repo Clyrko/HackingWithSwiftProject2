@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     var countries = [String]()
     var correctAnswer = 0
     var score = 0
+    var questionCount = 1
+    let questionLimit = 10
     
     
 
@@ -59,7 +61,7 @@ class ViewController: UIViewController {
         
         // Putting correct country title in Nav bar
         let correctCountryChoice = countries[correctAnswer].uppercased()
-        title = "Current Score: \(score), Pick: \(correctCountryChoice)"
+        title = "Current Score: \(score) , Pick: \(correctCountryChoice)"
         
     }
     
@@ -79,9 +81,22 @@ class ViewController: UIViewController {
             
         }
         
-        let ac = UIAlertController(title: title, message: "Your current score is \(score)", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
-        present(ac, animated: true)
+        if questionCount < questionLimit {
+            
+            let ac = UIAlertController(title: title, message: "Your current score is \(score)", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+            present(ac, animated: true)
+            questionCount += 1
+            
+        } else {
+            
+            let ac = UIAlertController(title: title, message: "You have answered 10 questions, you got \(score) correct!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "End Game", style: .default, handler: askQuestion))
+            present(ac, animated: true)
+            questionCount = 1
+            score = 0
+            
+        }
         
     }
     
