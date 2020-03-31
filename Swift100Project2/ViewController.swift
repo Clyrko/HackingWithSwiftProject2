@@ -54,13 +54,12 @@ class ViewController: UIViewController {
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
         
-        // Putting correct country title in Nav bar
-        title = countries[correctAnswer].uppercased()
-        
         // Choosing the right answer
         correctAnswer = Int.random(in: 0...2)
         
-        
+        // Putting correct country title in Nav bar
+        let correctCountryChoice = countries[correctAnswer].uppercased()
+        title = "Current Score: \(score), Pick: \(correctCountryChoice)"
         
     }
     
