@@ -61,7 +61,7 @@ class ViewController: UIViewController {
         
         // Putting correct country title in Nav bar
         let correctCountryChoice = countries[correctAnswer].uppercased()
-        title = "Current Score: \(score) , Pick: \(correctCountryChoice)"
+        title = "Score: \(score) , Pick: \(correctCountryChoice)"
         
     }
     
